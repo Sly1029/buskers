@@ -1,12 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ReactDOM from "react-dom";
+import Image from "./Image.js";
+import HomePage from "./HomePage";
 
 import * as ROUTES from "../../constants/routes";
 
-const HomePage = () => (
-  <div>
-    <h1>This is Home</h1>
-  </div>
-);
-
-export default HomePage;
+ReactDOM.render(<HomePage />, document.getElementById("root"));
