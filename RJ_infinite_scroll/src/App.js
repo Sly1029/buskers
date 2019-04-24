@@ -29,6 +29,7 @@ import React, { Component } from "react";
 
         for (var i = 58; i<=68;i++){
           imageUrls.push("IMG_22"+i+".jpg");
+          console.log("IMG_22"+i+".jpg");
         }
 
       }
@@ -36,8 +37,9 @@ import React, { Component } from "react";
       showItems() {
 
         for (var i = 0; i < this.state.imageUrls; i++) {
-        images.push(<img src={process.env.PUBLIC_URL + '/'+ imageUrls[i]} alt="logo"/>)
-        console.log(images[i])
+        images.push(<img src={require(process.env.PUBLIC_URL + '/'+ imageUrls[i])} alt="logo"/>)
+        //images.push(<Img src={require('../public/'+ imageUrls[i])} alt="logo"/>)
+        console.log(images[i]);
         }
         return images;
       }
