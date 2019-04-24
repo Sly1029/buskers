@@ -1,7 +1,7 @@
     import React, { Component } from "react";
     import logo from "./logo.svg";
     import "./App.css";
-    import Image from 'react-image-resizer'
+    import Image from "./Image.js"
     class App extends Component {
       constructor(props) {
         super(props);
@@ -24,17 +24,14 @@
 
       showItems() {
         var items = [];
+        //<div>
+        //<img src={require('./busking/'+"IMG_"+incrementor+".jpg")}/>;
+        //</div>);
         var incrementor = 2258;
-        //'./busking/'+"IMG_"+incrementor+".jpg"
         for (var i = 0; i < this.state.items; i++) {
           items.push(
-            <div>
-            <Image
-              src="../public/IMG_2258.jpg"
-              height= {200}
-              width = {200}
-            />
-          </div>
+            <Image src={require('./busking/'+"IMG_"+incrementor+".jpg")} height={500} width={500} mode='fit'/>
+
           );
          incrementor++;
         }
