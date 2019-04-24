@@ -31,7 +31,13 @@
         //</div>);
 
         for (var i = 0; i < this.state.items; i++) {
-          if (incrementor == 2262){
+          if (incrementor == 2283){
+            incrementor = 2284;
+          }
+          if (incrementor == 2271){
+            incrementor = 2273;
+          }
+          if (incrementor == 2302){
             incrementor = 2258;
           }
           items.push(
