@@ -1,77 +1,72 @@
-import React, { Component } from "react";
+    import React, { Component } from "react";
     import logo from "./logo.svg";
     import "./App.css";
-    import InfiniteScroll from "react-infinite-scroller";
-    import firebase from 'firebase'
-    import Img from 'react-image'
-
-    // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCFPcW9EdAcRq9syfi_-5yZwvUAfwI3PTE",
-    authDomain: "busker-5561a.firebaseapp.com",
-    databaseURL: "https://busker-5561a.firebaseio.com",
-    projectId: "busker-5561a",
-    storageBucket: "busker-5561a.appspot.com",
-    messagingSenderId: "564719364967"
-  };
-  var imageUrls = [];
-  var images = [];
-  firebase.initializeApp(config);
-  const itemsRef = firebase.database().ref('example');
-  const storageRef = firebase.storage().ref()
-    class Scroll2 extends Component {
+    import Image from 'react-image-resizer'
+    class App extends Component {
       constructor(props) {
         super(props);
         this.state = {
-          items: 20,
-          hasMoreItems: true
+          items: 5,
+          loading: false
         };
-
-        for (var i = 58; i<=68;i++){
-          imageUrls.push("IMG_22"+i+".jpg");
-          console.log("IMG_22"+i+".jpg");
-        }
-
+      }
+      componentDidMount() {
+        // Detect when scrolled to bottom.
+        this.refs.myscroll.addEventListener("scroll", () => {
+          if (
+            this.refs.myscroll.scrollTop + this.refs.myscroll.clientHeight >=
+            this.refs.myscroll.scrollHeight
+          ) {
+            this.loadMore();
+          }
+        });
       }
 
       showItems() {
-
-        for (var i = 0; i < this.state.imageUrls; i++) {
-        images.push(<img src={require(process.env.PUBLIC_URL + '/'+ imageUrls[i])} alt="logo"/>)
-        //images.push(<Img src={require('../public/'+ imageUrls[i])} alt="logo"/>)
-        console.log(images[i]);
+        var items = [];
+        var incrementor = 2258;
+        //'./busking/'+"IMG_"+incrementor+".jpg"
+        for (var i = 0; i < this.state.items; i++) {
+          items.push(
+            <div>
+            <Image
+              src="../public/IMG_2258.jpg"
+              height= {200}
+              width = {200}
+            />
+          </div>
+          );
+         incrementor++;
         }
-        return images;
+        return items;
       }
 
       loadMore() {
-        if(this.state.images===13){
-
-          this.setState({ hasMoreItems: false});
-        }else{
-            setTimeout(() => {
-            this.setState({ items: this.state.images + 5});
+        this.setState({ loading: true });
+        setTimeout(() => {
+          this.setState({ items: this.state.items + 5, loading: false });
         }, 2000);
-        }
-
       }
 
       render() {
         return (
-          <div className="App">
-            <div style={{height:'2000px', overflow:'auto'}}>
-              <InfiniteScroll
-                loadMore={this.loadMore.bind(this)}
-                hasMore={this.state.hasMoreItems}
-                loader={<div className="loader"> Loading... </div>}
-                useWindow={false}
-              >
-                {this.showItems()}{" "}
-              </InfiniteScroll>{" "}
-            </div>{" "}
+          <div
+            className="App"
+            ref="myscroll"
+            style={{ height: "2000px", overflow: "auto" }}
+          >
+            <ul>
+              {this.showItems()}
+            </ul>
+            {this.state.loading
+              ? <p className="App-intro">
+                  loading ...
+                </p>
+              : ""}
+
           </div>
         );
       }
     }
 
-    export default Scroll2;
+    export default App;
