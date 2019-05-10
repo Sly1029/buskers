@@ -9,6 +9,8 @@ import PasswordForgetPage from "../PasswordForget";
 import HomePage from "../Home/HomePage";
 import AccountPage from "../Account";
 import AdminPage from "../Admin";
+import MyCarousel from "../Navigation/Carousel";
+import HomeJumbotron from "../Navigation/Jumbotron";
 
 import * as ROUTES from "../../constants/routes";
 
@@ -16,6 +18,20 @@ const App = () => (
   <Router>
     <div>
       <Navigation />
+    </div>
+    <hr />
+    <div>
+      <MyCarousel />
+    </div>
+    <hr />
+    <div>
+      <HomeJumbotron />
+    </div>
+    <hr />
+    <div class="container fluid">
+      <HomePage />
+
+
 
       <hr />
 
