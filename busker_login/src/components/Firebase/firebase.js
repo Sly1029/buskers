@@ -13,11 +13,14 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
-
     this.auth = app.auth();
   }
   // *** Auth API ***
 
+
+returnRef(reference){
+  return firebase.ref(reference)
+}
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
@@ -30,24 +33,7 @@ class Firebase {
 
   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  addImages(){
-    const storageRef = firebase.storage().ref();
-    var mainImage;
-    var path = require('path')
-    var fs = require('fs')
-    const directoryPath = path.join('busking');
-    //passsing directoryPath and callback function
-    fs.readdir(directoryPath, function (err, files) {
-    //handling error
-    if (err) {
-        return console.log('Unable to scan directory: ' + err);
-    }
-    //listing all files using forEach
-    files.forEach(function (file) {
-        // Do whatever you want to do with the file
-        mainImage = storageRef.child(file.name);
-    });
-});
+
+
 }
-}
-export default Firebase;
+export default Firebase
