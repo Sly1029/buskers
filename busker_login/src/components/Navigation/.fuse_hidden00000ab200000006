@@ -1,0 +1,16 @@
+import React from "react";
+import Carousel from "react-bootstrap/Carousel";
+import ReactDOM from "react-dom";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+
+const HomeJumbotron = () => (
+  <Container fluid>
+    <Jumbotron>
+      <h1>We are CurbStyle!</h1>
+      <p>We will put the company description in here in future...</p>
+    </Jumbotron>
+  </Container>
+);
+
+export default HomeJumbotron;
