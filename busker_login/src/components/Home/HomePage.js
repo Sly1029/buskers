@@ -29,6 +29,7 @@ class HomePage extends Component {
     this.populateList();
     this.loadMore();
   }
+
   componentDidMount() {
     // Detect when scrolled to bottom.
     this.refs.myscroll.addEventListener("scroll", () => {

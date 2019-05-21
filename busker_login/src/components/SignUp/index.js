@@ -4,6 +4,12 @@ import { compose } from "recompose";
 
 import { withFirebase } from "../Firebase";
 
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+
 import * as ROUTES from "../../constants/routes";
 
 const SignUpPage = () => (
